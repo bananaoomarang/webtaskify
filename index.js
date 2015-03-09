@@ -11,6 +11,7 @@ var resumer = require('resumer');
 var streamToPromise = require('stream-to-promise');
 var Errors = require('./errors');
 var dotenv = require('dotenv');
+var debug = require('debug')('webtaskify');
 
 function createAndSaveLib(options) {
   options.output = path.dirname(options.output) || process.cwd();
@@ -94,7 +95,9 @@ function createFileConfig(options, file) {
 
   var envConfig = null;
   try {
-    var dotenvFile = fs.readFileSync(options.env || path.resolve(process.cwd(), '/.env'));
+    var envLocation = options.env || path.resolve(process.cwd(), '.env');
+    debug(".env location", envLocation);
+    var dotenvFile = fs.readFileSync();
     var envConfig = dotenv.parse(dotenvFile);
   } catch(e) {
     // Does nothing if there's an error reading the .env file
