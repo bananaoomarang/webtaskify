@@ -14,8 +14,8 @@ var Errors = require('./errors');
 function createAndSaveLib(options) {
   options.output = path.dirname(options.output) || __dirname;
    return Promise.all([
-      createLibFor(options , false, './taskd.dev.js'),
-      createLibFor(options, true, './taskd.js'),
+      createLibFor(options , false, './webtask.dev.js'),
+      createLibFor(options, true, './webtask.js'),
    ]);
 }
 
