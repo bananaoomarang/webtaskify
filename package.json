@@ -1,6 +1,6 @@
 {
   "name": "webtaskify",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A CLI to create JS Proxies to be able to call WebTask.io from your SPA",
   "main": "index.js",
   "repository": {
