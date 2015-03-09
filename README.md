@@ -49,6 +49,7 @@ Once it's installed, you'll be able to call the `webtaskify` command from your t
     -t, --tenantName <tenantName>    The name of your account
     -b, --baseUrl <baseUrl>          Base URL for all tasks files. By default, Referer will be used from the request if not specified
     -f, --files <files>              Glob that references all tasks that can be used
+    -e, --env <env>                  The path to the .env file. Defaults to ./.env
     -n, --tenantToken <tenantToken>  The main token from your account
     -o, --output <folder>            Location to save the proxy files. Defaults to current directory
 ```
