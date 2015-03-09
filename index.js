@@ -114,7 +114,7 @@ function createFileConfig(options, file) {
       method: 'POST',
       json: true,
       body: {
-        ectx: envConfig
+        ectx: envConfig || {}
       }
     }).then(function(response) {
       fileConfig.token = response;
@@ -130,7 +130,7 @@ function createFileConfig(options, file) {
       json: true,
       body: {
         url: url.resolve(options.baseUrl || '/', path.relative(process.cwd(), file)),
-        ectx: envConfig
+        ectx: envConfig || {}
       }
     }).then(function(response) {
       fileConfig.token = response;
