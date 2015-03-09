@@ -97,7 +97,7 @@ function createFileConfig(options, file) {
   try {
     var envLocation = options.env || path.resolve(process.cwd(), '.env');
     debug(".env location", envLocation);
-    var dotenvFile = fs.readFileSync();
+    var dotenvFile = fs.readFileSync(envLocation);
     var envConfig = dotenv.parse(dotenvFile);
   } catch(e) {
     // Does nothing if there's an error reading the .env file
