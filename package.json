@@ -1,0 +1,31 @@
+{
+  "name": "webtaskify",
+  "version": "0.1.0",
+  "description": "A CLI to create JS Proxies to be able to call WebTask.io",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:auth0/webtaskify.git"
+  },
+  "authors": [
+    "Martin Gontovnikas <martin@gon.to> (http://gon.to/)"
+  ],
+  "bin": "cmd.js",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auth0/webtaskify/issues"
+  },
+  "homepage": "https://github.com/auth0/webtaskify",
+  "dependencies": {
+    "bluebird": "^2.9.12",
+    "browserify": "^9.0.3",
+    "colors": "^1.0.3",
+    "commander": "^2.6.0",
+    "glob": "^4.4.1",
+    "lodash": "^3.3.1",
+    "request-promise": "^0.4.0",
+    "reqwest": "^1.1.5",
+    "stream-to-promise": "^1.0.4",
+    "when": "^3.7.2"
+  }
+}
