@@ -25,11 +25,13 @@
     "dotenv": "^0.5.1",
     "glob": "^4.4.1",
     "lodash": "^3.3.1",
+    "prettyjson": "^1.1.0",
     "request": "^2.53.0",
     "request-promise": "^0.4.0",
     "reqwest": "^1.1.5",
     "resumer": "0.0.0",
     "stream-to-promise": "^1.0.4",
+    "through": "^2.3.6",
     "when": "^3.7.2"
   }
 }
