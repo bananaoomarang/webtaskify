@@ -66,6 +66,7 @@ Once it's installed, you'll be able to call the `webtaskify` command from your t
     -h, --help                       output usage information
     -t, --tenantName <tenantName>    The name of your account
     -n, --tenantToken <tenantToken>  The main token from your account
+    -r, --raw'                       Outputs a raw JSON output
 ```
 
 ## Examples

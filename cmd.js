@@ -33,6 +33,7 @@ program
   .description('Logs the output of Webtask.io. Usefull for debugging tasks')
   .option('-t, --tenantName <tenantName>', 'The name of your account')
   .option('-n, --tenantToken <tenantToken>', 'The main token from your account')
+  .option('-r, --raw', 'Outputs a raw JSON output')
   .action(function(options) {
     try {
       logger(options);

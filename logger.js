@@ -16,15 +16,7 @@ module.exports = function(options) {
     Errors.fieldIsRequired('tenantToken', 'your account token', 'check WebTask.io logs');
   }
 
-  var dataParser = through(function write(data) {
-    var log = data.toString('utf8');
-    this.queue('New log entry:'.underline.magenta);
-    this.queue('\n');
-    this.queue(prettyjson.render(JSON.parse(log)));
-  });
-
-
-  request({
+  var requestStream = request({
     url: url.resolve(constants.url, constants.logEndpoint) + options.tenantName,
     method: 'GET',
     json: true,
@@ -32,6 +24,16 @@ module.exports = function(options) {
       key: options.tenantToken
     }
   })
-  .pipe(dataParser)
-  .pipe(process.stdout);
+
+  debug("Raw option", options.raw);
+  if (!options.raw) {
+    var dataParser = through(function write(data) {
+      var log = data.toString('utf8');
+      this.queue('New log entry:'.underline.magenta);
+      this.queue('\n');
+      this.queue(prettyjson.render(JSON.parse(log)));
+    });
+    requestStream = requestStream.pipe(dataParser);
+  }
+  requestStream.pipe(process.stdout);
 }
