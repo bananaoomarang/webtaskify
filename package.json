@@ -21,6 +21,7 @@
     "browserify": "^9.0.3",
     "colors": "^1.0.3",
     "commander": "^2.6.0",
+    "dotenv": "^0.5.1",
     "glob": "^4.4.1",
     "lodash": "^3.3.1",
     "request": "^2.53.0",

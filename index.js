@@ -10,6 +10,7 @@ var browserify = require('browserify');
 var resumer = require('resumer');
 var streamToPromise = require('stream-to-promise');
 var Errors = require('./errors');
+var dotenv = require('dotenv');
 
 function createAndSaveLib(options) {
   options.output = path.dirname(options.output) || __dirname;
@@ -91,8 +92,31 @@ function createFileConfig(options, file) {
     path: file
   };
 
+  var envConfig = null;
+  try {
+    var dotenvFile = fs.readFileSync(options.env || (__dirname + '/.env'));
+    var envConfig = dotenv.parse(dotenvFile);
+  } catch(e) {
+    // Does nothing if there's an error reading the .env file
+  }
+
+
+
   if (options.embedCode) {
-    return Promise.resolve(fileConfig);
+    return request({
+      url: url.resolve(constants.url, constants.tokenEndpoint),
+      headers: {
+        Authorization: 'Bearer ' + options.tenantToken
+      },
+      method: 'POST',
+      json: true,
+      body: {
+        ectx: envConfig
+      }
+    }).then(function(response) {
+      fileConfig.token = response;
+      return fileConfig;
+    });
   } else {
     return request({
       url: url.resolve(constants.url, constants.tokenEndpoint),
@@ -103,7 +127,7 @@ function createFileConfig(options, file) {
       json: true,
       body: {
         url: url.resolve(options.baseUrl || '/', path.relative(process.cwd(), file)),
-        ectx: options.env
+        ectx: envConfig
       }
     }).then(function(response) {
       fileConfig.token = response;

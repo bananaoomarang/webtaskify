@@ -27,7 +27,7 @@ EmbedCodeTask.prototype.run = function(params) {
       crossOrigin: true,
       url: constants.url + __this.manifest.tenantName + '?' + querystring.stringify(params),
       headers: {
-        Authorization: 'Bearer ' + __this.manifest.tenantToken
+        Authorization: 'Bearer ' + __this.task.token
       },
       method: 'POST',
       data: taskContent.response

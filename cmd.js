@@ -14,6 +14,7 @@ program
   .option('-b, --baseUrl <baseUrl>', 'Base URL for all tasks files. By default, Referer will be used from the request if not specified')
   .option('-f, --files <files>', 'Glob that references all tasks that can be used')
   .option('-n, --tenantToken <tenantToken>', 'The main token from your account')
+  .option('-e, --env <env>', 'The path to the .env file. Defaults to ./.env.')
   .option('-o, --output <folder>', 'Location to save the proxy files. Defaults to current directory')
   .action(function(options) {
     try {
