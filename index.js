@@ -13,7 +13,7 @@ var Errors = require('./errors');
 var dotenv = require('dotenv');
 
 function createAndSaveLib(options) {
-  options.output = path.dirname(options.output) || __dirname;
+  options.output = path.dirname(options.output) || process.cwd();
    return Promise.all([
       createLibFor(options , false, './webtask.dev.js'),
       createLibFor(options, true, './webtask.js'),
@@ -94,7 +94,7 @@ function createFileConfig(options, file) {
 
   var envConfig = null;
   try {
-    var dotenvFile = fs.readFileSync(options.env || (__dirname + '/.env'));
+    var dotenvFile = fs.readFileSync(options.env || path.resolve(process.cwd(), '/.env'));
     var envConfig = dotenv.parse(dotenvFile);
   } catch(e) {
     // Does nothing if there's an error reading the .env file
