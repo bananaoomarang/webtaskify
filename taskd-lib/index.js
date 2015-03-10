@@ -1,7 +1,7 @@
-var Taskd = require('./taskd');
+var Webtask = require('./webtask');
 
-var TaskdCreator = function(manifest) {
-  return new Taskd(manifest)
+var WebtaskCreator = function(manifest) {
+  return new Webtask(manifest)
 };
 
-module.exports = TaskdCreator;
+module.exports = WebtaskCreator;
