@@ -35,7 +35,7 @@ function createLibFile(output, options) {
     var libStream = resumer().queue(fileContent).end();
     var writableSream = fs.createWriteStream(output);
 
-    var b = browserify({standalone: 'taskd', basedir: scriptPath});
+    var b = browserify({standalone: 'webtask', basedir: scriptPath});
     b.add(libStream);
 
     // b.transform({
