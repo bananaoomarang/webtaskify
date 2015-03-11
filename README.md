@@ -27,6 +27,7 @@ Once it's installed, you'll be able to call the `webtaskify` command from your t
 
   Commands:
 
+    login              Enter your account name and WebTask token to run other tasks
     create [options]   Creates the proxy files to be able to call https://webtask.io/ to run your backend task
     logs [options]     Logs the output of Webtask.io. Usefull for debugging tasks
 
@@ -46,11 +47,9 @@ Once it's installed, you'll be able to call the `webtaskify` command from your t
   Options:
 
     -h, --help                       output usage information
-    -t, --tenantName <tenantName>    The name of your account
     -b, --baseUrl <baseUrl>          Base URL for all tasks files. By default, Referer will be used from the request if not specified
     -f, --files <files>              Glob that references all tasks that can be used
     -e, --env <env>                  The path to the .env file. Defaults to ./.env
-    -n, --tenantToken <tenantToken>  The main token from your account
     -o, --output <folder>            Location to save the proxy files. Defaults to current directory
 ```
 
@@ -64,31 +63,39 @@ Once it's installed, you'll be able to call the `webtaskify` command from your t
   Options:
 
     -h, --help                       output usage information
-    -t, --tenantName <tenantName>    The name of your account
-    -n, --tenantToken <tenantToken>  The main token from your account
     -r, --raw                       Outputs a raw JSON output
 ```
 
 ## Examples
+
+### `webtaskify login`
+
+Logs the user in
+
+```bash
+webtaskify login
+> Enter your WebTask account name: mgonto
+> Enter your WebTask Token (hidden):
+```
 
 ### `webtaskify create`
 
 #### Create the proxy files for all tasks inside the `/tasks/` folder
 
 ```bash
-webtaskify create -f ./tasks/**/*.js -t 'mgonto' -n 'eyJhbGciOiJIUzI1NiIsImtpZCI6IjEifQ.eyJqdGkiOiI4MGQ3N2I5MWIwZGI0OTI3OWVhMmYzOTI4MThkYTQxNiIsImlhdCI6MTQyNDk3NDA3MiwidGVuIjoibWdvbnRvIn0.De7gtF5upLB7zRdVMw4_WShGJJbVA84oIttEMkoX6Yw'
+webtaskify create -f ./tasks/**/*.js
 ```
 
 #### Create the proxy files for `email.js` and outputs the proxies into the `build/` folder
 
 ```bash
-webtaskify create -f ./email.js -o build/ -t 'mgonto' -n 'eyJhbGciOiJIUzI1NiIsImtpZCI6IjEifQ.eyJqdGkiOiI4MGQ3N2I5MWIwZGI0OTI3OWVhMmYzOTI4MThkYTQxNiIsImlhdCI6MTQyNDk3NDA3MiwidGVuIjoibWdvbnRvIn0.De7gtF5upLB7zRdVMw4_WShGJJbVA84oIttEMkoX6Yw'
+webtaskify create -f ./email.js -o build/
 ```
 
 #### Create the proxy files with a baseUrl from Github Pages (Where the code will be deployed)
 
 ```bash
-webtaskify create -f ./tasks/**/*.js -b 'http://auth0.github.io/taskd-sample/' -t 'mgonto' -n 'eyJhbGciOiJIUzI1NiIsImtpZCI6IjEifQ.eyJqdGkiOiI4MGQ3N2I5MWIwZGI0OTI3OWVhMmYzOTI4MThkYTQxNiIsImlhdCI6MTQyNDk3NDA3MiwidGVuIjoibWdvbnRvIn0.De7gtF5upLB7zRdVMw4_WShGJJbVA84oIttEMkoX6Yw'
+webtaskify create -f ./tasks/**/*.js -b 'http://auth0.github.io/taskd-sample/'
 ```
 
 ### `webtaskify logs`
@@ -96,7 +103,7 @@ webtaskify create -f ./tasks/**/*.js -b 'http://auth0.github.io/taskd-sample/' -
 #### Log the output of running the WebTask
 
 ```bash
-webtaskify logs -t 'mgonto' -n 'eyJhbGciOiJIUzI1NiIsImtpZCI6IjEifQ.eyJqdGkiOiI4MGQ3N2I5MWIwZGI0OTI3OWVhMmYzOTI4MThkYTQxNiIsImlhdCI6MTQyNDk3NDA3MiwidGVuIjoibWdvbnRvIn0.De7gtF5upLB7zRdVMw4_WShGJJbVA84oIttEMkoX6Yw'
+webtaskify logs
 ```
 
 ## Contributing
