@@ -25,7 +25,7 @@ EmbedCodeTask.prototype.run = function(params) {
   return this.loadingTask.then(function(taskContent) {
     return request({
       crossOrigin: true,
-      url: constants.url + __this.manifest.tenantName + '?' + querystring.stringify(params),
+      url: constants.url + constants.runEndpoint + __this.manifest.tenantName + '?' + querystring.stringify(params),
       headers: {
         Authorization: 'Bearer ' + __this.task.token
       },

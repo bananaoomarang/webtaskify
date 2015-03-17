@@ -10,7 +10,7 @@ function CodeUrlCodeTask(task, manifest) {
 
 CodeUrlCodeTask.prototype.run = function(params) {
   return when(request({
-    url: constants.url + this.manifest.tenantName + '?' + querystring.stringify(params),
+    url: constants.url + constants.runEndpoint + this.manifest.tenantName + '?' + querystring.stringify(params),
     crossOrigin: true,
     headers: {
       Authorization: 'Bearer ' + this.task.token

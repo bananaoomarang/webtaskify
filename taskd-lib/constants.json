@@ -1,3 +1,4 @@
 {
-  "url": "https://sandbox-dev.it.auth0.com:8721/"
+  "url": "https://sandbox-dev.it.auth0.com:8721/",
+  "runEndpoint": "api/run/"
 }
