@@ -52,10 +52,12 @@ program
     } catch (e) {
       Errors.displayException(e);
     }
-  })
+  });
 
 
 
 program.parse(process.argv);
 
-
+if(process.argv.length === 2) {
+    program.help();
+}
